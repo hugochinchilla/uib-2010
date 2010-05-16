@@ -1,4 +1,4 @@
-This project is an agroupation of exercises for some subjects in "my degree":http://eps.uib.es/est_estudi.php?idest=3.
+This repo is an agroupation of exercises for some subjects in "my degree":http://eps.uib.es/est_estudi.php?idest=3.
 
 h2. so (Operating Systems)
 
