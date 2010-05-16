@@ -23,15 +23,13 @@ The items in this exercise are:
 
 * 1 writer log file
 
-Initially all values are set to 0 (the dirty flag too). Clients comunicate with the servers (only one server attends a request) trought the message queues
-in order to read or modify an entry (in the shared memory zone). If a server receives a write operation it stores the new value and sets its dirty flag to 1.
+Initially all values are set to 0 (the dirty flag too). Clients comunicate with the servers (only one server attends a request) trought the message queues in order to read or modify an entry (in the shared memory zone). If a server receives a write operation it stores the new value and sets its dirty flag to 1.
 
 Periodically, the shared memory data is stored into a binary file by the writer process.
 
-Any memory access (on the shared memory zone or the binary file) should be managed with semaphores ("Readers-writers problem":http://en.wikipedia.org/wiki/Readers-writers_problem)
+Any memory access (on the shared memory zone or the binary file) should be managed with semaphores ("Readers-writers problem":http://en.wikipedia.org/wiki/Readers-writers_problem).
 
 
 h2. bbdd (Data Bases)
 
-It consists on making a simple database design and a PHP application for managing a private messaging area, which will contain users and departments, manage
-diferent user privileges and hability to send messages to single users or departments (aka user groups).
+It consists on making a simple database design and a PHP application for managing a private messaging area, which will contain users and departments, manage diferent user privileges and hability to send messages to single users or departments (aka user groups).
