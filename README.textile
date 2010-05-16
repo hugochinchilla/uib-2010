@@ -1,4 +1,4 @@
-This project is an agroupation of exercises for some subjects in my degree.
+This project is an agroupation of exercises for some subjects in "my degree":http://eps.uib.es/est_estudi.php?idest=3.
 
 h2. so (Operating Systems)
 
@@ -19,11 +19,11 @@ The items in this exercise are:
 * 1 shared memory with 15.000 entries
 ** Each entry in the shared memory zone will have 2 values
 *** Value
-*** Dirty (boolean mark)
+*** Dirty (boolean flag)
 
 * 1 writer log file
 
-Initially all values are set to 0 (the dirty marker too). Clients comunicate with the servers (only one server attends a request) trought the message queues
+Initially all values are set to 0 (the dirty flag too). Clients comunicate with the servers (only one server attends a request) trought the message queues
 in order to read or modify an entry (in the shared memory zone). If a server receives a write operation it stores the new value and sets its dirty flag to 1.
 
 Periodically, the shared memory data is stored into a binary file by the writer process.
