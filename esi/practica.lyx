@@ -1,0 +1,4493 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{graphicx}
+\end_preamble
+\use_default_options false
+\language catalan
+\inputencoding default
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family rmdefault
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{ }}       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}          
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Darrera modificació: 
+\backslash
+today}} 
+\end_layout
+
+\end_inset
+
+
+\size large
+\SpecialChar \textcompwordmark{}
+
+\size giant
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+Anàlisi del sistema
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Hugo Chinchilla Carbonell
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+Miquel Rosselló Reinés
+\begin_inset Newline linebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{ }}       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{{DESCRIPCIÓ GENERAL DEL SISTEMA}}       
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Descripció General del Sistema actual
+\end_layout
+
+\begin_layout Subsection
+Organització actual del sistema
+\end_layout
+
+\begin_layout Standard
+L'organització de la xarxa d'acadèmies d'idiomes 
+\begin_inset Quotes eld
+\end_inset
+
+Comunica't
+\begin_inset Quotes erd
+\end_inset
+
+ es composa de nou centres distribuits arreu de les Illes Balears de la
+ següent forma:
+\end_layout
+
+\begin_layout Itemize
+Quatre centres a Palma (Born, Avingudes, Manacor, General Riera)
+\end_layout
+
+\begin_layout Itemize
+Un centre a Llucmajor
+\end_layout
+
+\begin_layout Itemize
+Un centre a Inca
+\end_layout
+
+\begin_layout Itemize
+Un Centre a Manacor
+\end_layout
+
+\begin_layout Itemize
+Un Centre a Maó
+\end_layout
+
+\begin_layout Itemize
+Un Centre a Cuitadella
+\end_layout
+
+\begin_layout Itemize
+Properament, un centre a Eivissa
+\end_layout
+
+\begin_layout Standard
+\align block
+\SpecialChar \textcompwordmark{}
+
+\begin_inset Newline linebreak
+\end_inset
+
+Esquema de l'organització del personal de 
+\series bold
+cada centre
+\series default
+, juntament amb una breu descripció de les funcions:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Equip directiu
+\series default
+ (Únic per tots els centres), tasques de direcció i gerència.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Recursos humans
+\series default
+ (Únic per a tots els centres), gestionen les nòmines i les contractacions
+ del personal i professors, a més de la recepció i actualització de currículums
+ de professors.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Serveis administratius
+\series default
+, recepcionen als alumnes, gestionen les matriculacions i els materials
+ en prèstec.
+ També emeten els certificats d'assistencia per als cursos.
+ El responsable de cada centre pertany a aquest grup.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Departament comercial
+\series default
+, dissenya els cursos estandard o a mida (encomanats per empreses), els
+ materials associats als cursos i realitza estudis sobre nombre de matriculats
+ i assistencia dels alumnes dels cursos anteriors, i que també assigna professor
+s als cursos.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Professors
+\series default
+, titulats de diferentes nacionalitats, imparteixen les classes i controlen
+ l'assistencia dels alumnes.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Funcionament actual del sistema
+\end_layout
+
+\begin_layout Standard
+\SpecialChar \textcompwordmark{}
+
+\end_layout
+
+\begin_layout Standard
+\align block
+Cada centre disposa d'aules on s'imparteixen els diferents cursos oferts.
+ Les tasques de recepció d'alumnes sempre les fa algú del serveis administratius.
+\end_layout
+
+\begin_layout Standard
+Actualment s'imparteixen cursos de diferents idiomes i nivells, orientats
+ a diferents franges d'edat.
+ Si un curs te massa sol·licituts de matricula, o bé es divideix en grups
+ petits o be es limita el nombre d'admessos.
+ Per tal de determinar el nivell d'un alumne en un determinat idioma existeixen.
+ Un professor pot impartir classes en diferents centres i te assignat un
+ nombre determinat de cursos.
+ Un curs determinat nomes l'imparteix un professor.
+ Actualment s'estudia la possibilitat de que el professor i els alumnes
+ facin algunes classes a un bar (fora de l'aula).
+ 
+\end_layout
+
+\begin_layout Standard
+Els cursos no oficials els dissenya el departament comercial de cada centre,
+ en funció de previsions basades en cursos anteriors, el qual determinen
+ la durada, temari, preu i professor assignat als mateixos, a mes de dissenyar
+ o determinar els materials complementaris.
+ Existeix la possibilitat que una empresa comani un curs amb els requeriments
+ que trobin adients.
+ A més podran requerir el control d'assistència dels empleats als cursos.
+\end_layout
+
+\begin_layout Standard
+Existeix la possibilitat de fer unes petites proves d'accés, dissenyades
+ pel departament comercial, per tal de donar a l'alumne la possibilitat
+ de saber quin seria el nivell mes adient pel qual s'hauria de matricular.
+ Aquestes proves no limiten en qualsevol cas l'accés d'un alumne a un curs
+ de nivell superior al resultant d'aquestes proves.
+\end_layout
+
+\begin_layout Standard
+Cada curs te una matricula independent.
+ Un alumne que es vulgui matricular ha de fer una preinscripció abans de
+ poder matricular-se.
+ Els serveis administratius de cada centre s'encarreguen de crear la llista
+ d'admessos, els quals posteriorment s'han de matricular emplenant uns formulari
+s del propi centre i pagant la quota, a mes es requereix una foto carnet.
+ Pels cursos oficials existeix la possibilitat de pagament mensual o trimestral.
+ Els pagaments es fan en metàlic o amb targeta.
+ 
+\end_layout
+
+\begin_layout Standard
+La selecció d'alumnes que es podran matricular es fa de manera oculta a
+ ells.
+ En principi es segueix la norma de que el primer preinscrit es el primer
+ en obtenir la plaça, si be en cas de no haver-hi places suficients es poden
+ revisar matricules anteriors i facilitat la continuïtat als alumnes que
+ ascendeixin nivell.
+\end_layout
+
+\begin_layout Standard
+\align block
+Cada centre disposa del seu propi material complementari pels diversos cursos
+ (revistes, llibres de text, películes, DVD's, etc) que s'ofereix als alumnes
+ matriculats en forma de préstecs.
+ El personal d'administració del propi centre es l'encarregat de lliurar,
+ recepcionar i dur el control de quin alumne te cada material.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Descripció general de la necessitat plantejada 
+\end_layout
+
+\begin_layout Standard
+\SpecialChar \textcompwordmark{}
+
+\end_layout
+
+\begin_layout Standard
+Aprofitant la unificacio dels diferents centres sota el nom 
+\begin_inset Quotes eld
+\end_inset
+
+Comunica't
+\begin_inset Quotes erd
+\end_inset
+
+ es vol crear una aplicació web unificada que inclogui la gestió dels centres
+ i accés web a la informació dels cursos impartits a tots els centres així
+ com informació dels propis centres.
+ Estan interessats, a més, en una mena de campus online, pels alumnes matriculat
+s i els professors, que afavoreixi la comunicació i l'intercanvi de materials
+ i activitats docents.
+ Es voldrà també la possibilitat de que tots els centres compartissin els
+ seus materials didàctics disponibles per préstecs.
+ Tenen la intenció d'unificar el serveis comercials al centre principal,
+ que correspon al centre Born, a Palma.
+ Els serveis administratius continuarien descentralitzats, lligats als centres,
+ mantenint un responsable per centre.
+ Els professors continuaran sense estar lligats a un centre concret, de
+ fet, realitzaran diferents cursos en diferents centres.
+ A més només poden donar classe en la seva llengua nativa (o llengües si
+ en tenen mes d'una).
+\end_layout
+
+\begin_layout Standard
+En definitiva, es tracta d'una aplicació per gestionar online la plana web,
+ els continguts, les matrícules, certificats, proves de nivell, gestió de
+ préstec de material, gestió de currículums de professors, gestió de personal,
+ gestió de cursos i el material associat i gestió de centres.
+ Es distingeixen els següents perfils d'accés a la aplicació web: 
+\end_layout
+
+\begin_layout Itemize
+Direcció
+\end_layout
+
+\begin_layout Itemize
+Serveis d'administració
+\end_layout
+
+\begin_layout Itemize
+Departament Comercial
+\end_layout
+
+\begin_layout Itemize
+Professors
+\end_layout
+
+\begin_layout Itemize
+Alumnes
+\end_layout
+
+\begin_layout Standard
+Cada nivell d'accés determinarà les limitacions d'accés a les diferents
+ parts i vistes de l'aplicació.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{CATÀLEG D'USUARIS}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Catàleg d'usuaris
+\end_layout
+
+\begin_layout Standard
+Per tal de realitzar les tasques d'obtenció de requeriments pel sistema,
+ s'ha contactat amb els següents usuaris.
+\end_layout
+
+\begin_layout Itemize
+Direcció
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Joana Llabrés Pons, 
+\series bold
+persona de contacte amb
+\series default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Comunica't
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971714320
+\end_layout
+
+\begin_layout Itemize
+e-mail: joanalp@acadpalma.es
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Gerent
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Adrià Adrover Llabrés
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971714320
+\end_layout
+
+\begin_layout Itemize
+e-mail: adriaal@acapalma.es
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Recursos Humans
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Joan Pons Ribes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971714320
+\end_layout
+
+\begin_layout Itemize
+e-mail: joanpr@acadpalma.es
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Andreu Joan Genovard
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971614356
+\end_layout
+
+\begin_layout Itemize
+e-mail: ajg@gmail.com
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Serveis Comercials
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Maria Ribes Puch, comercial del centre Palma-Born.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971714320
+\end_layout
+
+\begin_layout Itemize
+e-mail: mariarp@acadpalma.es
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pere Llabrés Pons, comercial del centre de Manacor.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971614356
+\end_layout
+
+\begin_layout Itemize
+e-mail: pere44@gmail.com
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rafel Genovard Garau, comercial del centre d'Inca.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971234343
+\end_layout
+
+\begin_layout Itemize
+e-mail: rgg@incdiomes.es
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Professors
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Roger Salleras, professor d'anglès Britànic.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 656434343
+\end_layout
+
+\begin_layout Itemize
+e-mail: rogerpeek@gmail.com
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Diane Lüke, professora d'alemany.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 655334423
+\end_layout
+
+\begin_layout Itemize
+e-mail: diaalu@yahoo.com
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Brigitte Andrews, professora d'anglès Americà.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 606112321
+\end_layout
+
+\begin_layout Itemize
+e-mail: brand1970@hotmail.com
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Serveis Administratius
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Jaume Fiol Mas, responsable centre Palma-Born.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971714320
+\end_layout
+
+\begin_layout Itemize
+e-mail: jaumefl@acadpalma.es
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Macià Llabrés Pons, responsable centre d'Inca.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971234343
+\end_layout
+
+\begin_layout Itemize
+e-mail: mlp@incdiomes.es
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Marta Riutort Gamundí, responsable centre de Manacor.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Telèfon: 971614356
+\end_layout
+
+\begin_layout Itemize
+e-mail: mriuga@gmail.com
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{OBTENCIÓ DE REQUERIMENTS}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Obtenció de requeriments
+\end_layout
+
+\begin_layout Standard
+A continuació s'adjunten les convocatòries de reunió, juntament amb les
+ actes corresponents.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{CONVOCATÒRIA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Llocs
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Càrrec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Adrià Adrover Llabrés
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gerent
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Directiva
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\series bold
+Ordre del dia
+\end_layout
+
+\begin_layout Itemize
+Obtenir una descripció general del funcionament i organització de l'empresa.
+\end_layout
+
+\begin_layout Itemize
+Obtenir una descripció general de la estructura i disposició dels centres.
+\end_layout
+
+\begin_layout Itemize
+Recorregut i visita del centre principal 
+\begin_inset Quotes eld
+\end_inset
+
+Comunica't
+\begin_inset Quotes erd
+\end_inset
+
+, al passeig del Born.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{ACTA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Durada:
+\series default
+ 90 minuts
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Lloc
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assistents
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Adrià Adrover Ferrer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="50line%">
+<column alignment="left" valignment="middle" width="50line%">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ordre del dia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Tractat
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Obtenir una descripció general del funcionament i organització de l'empresa.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Obtenir una descripció general de la estructura i disposició dels centres.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recorregut i visita del centre principal 
+\begin_inset Quotes eld
+\end_inset
+
+Comunica't
+\begin_inset Quotes erd
+\end_inset
+
+, al passeig del Born.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\series bold
+\size large
+Acords
+\end_layout
+
+\begin_layout Itemize
+Després de parlar amb el directiu i la gerent s'ha determinat que l'estructura
+ de l'empresa es la següent, també s'inclou una breu descripció de les funcions
+ desenvolupades actualment:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Equip Directiu
+\series default
+ (Únic per tots els centres), tasques de direcció i gerència.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Recursos Humans
+\series default
+ (Únic per a tots els centres), gestionen les nòmines i les contractacions
+ del personal i professors, a més de la recepció i actualització de currículums
+ de professors.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Serveis Administratius
+\series default
+, decepcionen als alumnes, gestionen les matriculacions i els materials
+ en préstec.
+ També emeten els certificats d'assistencia per als cursos.
+ El responsable de cada centre pertany a aquest grup.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Serveis Comercials
+\series default
+, dissenyen els cursos estandard o a mida (encomanats per empreses), els
+ materials associats als cursos i realitzen estudis sobre nombre de matriculats
+ i assistència dels alumnes dels cursos anteriors, i que també assignen
+ professors als cursos.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Professors
+\series default
+, titulats de diferents nacionalitats, imparteixen les classes i controlen
+ l'assistencia dels alumnes.
+\end_layout
+
+\begin_layout Standard
+Es vol crear una web unificada que inclogui accés web a la informació dels
+ cursos impartits a tots els centres així com informació dels propis centres.
+ 
+\end_layout
+
+\begin_layout Standard
+Estan interessats en una mena de campus online, pels alumnes matriculats
+ i els professors, que afavoreixi la comunicació i l'intercanvi de materials
+ i activitats docents.
+ 
+\end_layout
+
+\begin_layout Standard
+Per l'intercanvi de materials estaríem pendents de que la Direcció determini
+ si un alumne podrà accedir al material del centre on està matricular, o
+ si be podrà accedir a materials d'altres centres.
+ 
+\end_layout
+
+\begin_layout Standard
+Tenen la intenció d'unificar el serveis comercials al centre principal,
+ que correspon al centre Born.
+ 
+\end_layout
+
+\begin_layout Standard
+Els serveis administratius continuaran descentralitzats, lligats als centres,
+ mantenint un responsable per centre.
+ 
+\end_layout
+
+\begin_layout Standard
+Els professors no estan lligats a un centre concret, de fet, realitzen diferents
+ cursos en diferents centres.
+ A més només poden donar classe en la seva llengua nativa.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A més s'ha determinat que la distribució actual dels centres es la següent:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+4 Centres a Palma (Born, Avingudes, Manacor, General Riera)
+\end_layout
+
+\begin_layout Itemize
+1 Centre a Llucmajor
+\end_layout
+
+\begin_layout Itemize
+1 Centre a Inca
+\end_layout
+
+\begin_layout Itemize
+1 Centre a Manacor
+\end_layout
+
+\begin_layout Itemize
+1 Centre a Maó
+\end_layout
+
+\begin_layout Itemize
+1 Centre a Ciutadella
+\end_layout
+
+\begin_layout Itemize
+Properament, s'obrirà un centre a Eivissa
+\end_layout
+
+\begin_layout Standard
+Actualment cada centre te el seu nom, si bé s'ha determinat que el que es
+ vol es unificar tant la imatge com el nom de la xarxa de acadèmies sota
+ el nom de 
+\begin_inset Quotes eld
+\end_inset
+
+Comunica't
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Després del recorregut pel centre, s'ha demanat a la direcció permís per
+ contactar en successives reunions amb almenys dos representants de recursos
+ humans, tres representants dels serveis administratius de diferents centres
+ (almenys un de qualque centre de Palma), tres representants dels serveis
+ comercials (almenys un del centre principal Comunica't de Palma) i almenys
+ dos representants dels professors.
+ S'ha acordat que en principi, es farà una reunio amb cadascun dels grups
+ i a totes hi haurà algun representant de la direcció, en principi s'ha
+ ofert per la tasca Joana Llabrés Pons.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size large
+Nous punts a tractar
+\end_layout
+
+\begin_layout Itemize
+Per l'intercanvi de materials estam pendents de que la Direcció determini
+ en la propera reunió si un alumne podrà accedir al material del centre
+ on està matricular, o si be podrà accedir a materials d'altres centres.
+ 
+\end_layout
+
+\begin_layout Itemize
+Entrevista amb recursos humans, es convocarà a Joana Llabrés Pons,Joan Pons
+ Ribes i Andreu Joan Genovard.
+\end_layout
+
+\begin_layout Itemize
+Entrevista serveis comercials i professors, es convocarà a Joana Llabrés
+ Pons, Maria Ribes Puch, Pere Llabrés Pons i Rafel Genovard Garau, Roger
+ Piterman, Diane Lüke, Martin Smith.
+\end_layout
+
+\begin_layout Itemize
+Entrevista amb serveis administratiu, es convocarà a Joana Llabrés Pons,
+ Jaume Fiol Mas, Macià Llabrés Pons i Marta Riutort Gamundí.
+\end_layout
+
+\begin_layout Itemize
+En cas de ser necessari, es convocarien mes reunions, prèvia consulta a
+ Joana Llabrés Pons.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{CONVOCATÒRIA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0002
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Llocs
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Càrrec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Directiva
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joan Pons Ribes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recursos Humans
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Andreu Joan Genovard
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recursos Humans
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\series bold
+Ordre del dia
+\end_layout
+
+\begin_layout Itemize
+Entrevista amb representants del personal de recursos humans per tal d’obtenir
+ requeriments i informació específica de la seva àrea.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{ACTA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0002
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Durada:
+\series default
+ 60 minuts
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Lloc
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assistents
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joan Pons Ribes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Andreu Joan Genovard
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="50line%">
+<column alignment="left" valignment="middle" width="50line%">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ordre del dia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Tractat
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entrevista amb representants del personal de recursos humans per tal d'obtenir
+ requeriments i informació específica de la seva àrea.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\size large
+Acords
+\end_layout
+
+\begin_layout Itemize
+Recursos humans gestiona els currículums de tot el professorat i els manté
+ actualitzats en funció dels cursos de formació que realitzen.
+ La futura aplicació hauria de facilitar aquesta tasca permetent la introducció
+ de fitxes de professors amb els seus currículums corresponents, a més,
+ es dessitja que es puguin llistar els professors en funció del seu idioma
+ natiu i/o experiència.
+ Es podran confeccionar altres llistats.
+ Ja tenen software de gestió de personal i han manifestat que no els interessa
+ integrar aquesta gestió dins l'aplicatiu nou.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size large
+Nous punts a tractar
+\end_layout
+
+\begin_layout Itemize
+Presentar una maqueta de les funcionalitats que es desenvoluparan per satisfer
+ els requisits i demanar opinió als implicats.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{CONVOCATÒRIA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0003
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Llocs
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Càrrec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Directiva
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maria Ribes Puch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Serveis Comercials
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pere Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Serveis Comercials
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rafel Genovard Garau
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Serveis Comercials
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Roger Piterman
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Professor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diane Lüke
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Professor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Martin Smith
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Professor
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\series bold
+Ordre del dia
+\end_layout
+
+\begin_layout Itemize
+Entrevista amb representants del professorat i personal de departament comercial
+ per tal d'obtenir informació i requeriments específics de les seves àrees.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{ACTA DE REUNIÓ}}        Convocatòria
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0003
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Durada:
+\series default
+ 90 minuts
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Lloc
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assistents
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maria Ribes Puch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pere Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rafel Genovard Garau
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Roger Piterman
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diane Lüke
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Martin Smith
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="50line%">
+<column alignment="left" valignment="middle" width="50line%">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ordre del dia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Tractat
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entrevista amb representants del professorat i personal de departament comercial
+ per tal d'obtenir informació i requeriments específics de les seves àrees.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\size large
+Acords
+\series default
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+Professos:
+\end_layout
+
+\begin_layout Itemize
+Los profesores desearian poder llevar el control de asistencia de forma
+ informatizada, obteniendo un listado de alumnos matriculados en su curso
+ de forma automatizada y luego poder insertar en un panel que alumnos han
+ asistido a clase y cuales no.
+\end_layout
+
+\begin_layout Itemize
+En cuanto al campus online consideran que sería útil para ellos poder colgar
+ información relativa al curso para que los alumnos la descarguen así como
+ poder crear material didáctico interactivo (exámenes, tests, ejercicios).
+\end_layout
+
+\begin_layout Standard
+Servicios comerciales:
+\end_layout
+
+\begin_layout Itemize
+Actualmente tienen problemas para medir la efectividad de los cursos que
+ diseñan, no pueden consultar de forma rápida y ágil cuanta gente se matricula
+ en cada curso.
+\end_layout
+
+\begin_layout Itemize
+Cuando se crea un curso se tiende a repetir procesos como la elaboración
+ de material didáctico y las pruebas de nivel, estas tareas podrían simplificars
+e con el uso de plantillas.
+\end_layout
+
+\begin_layout Itemize
+Para medir la eficacia de un curso sería de utilidad poder consultar material
+ estadístico como la cantidad de matrículas realizadas, la asistencia a
+ las clases, en el caso de cursos de preparación para pruebas oficiales
+ poder consultar el porcentaje de éxito al superar la prueba.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size large
+Nous punts a tractar
+\end_layout
+
+\begin_layout Itemize
+Presentar una maqueta de las funcionalidades que se desarrollarían para
+ solucionar sus requerimientos y pedir opinion.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{CONVOCATÒRIA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0004
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Llocs
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Càrrecs
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Directiva
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jaume Fiol Mas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Serveis Administratius
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Macià Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Serveis Administratius
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Marta Riutort Gamundí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Serveis Administratius
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\series bold
+Ordre del dia
+\end_layout
+
+\begin_layout Itemize
+Entrevista amb representants del professorat i personal de serveis administratiu
+s per tal d'obtenir informació i requeriments específics de les seves àrees.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{ACTA DE REUNIÓ}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="33line%">
+<column alignment="left" valignment="middle" width="33line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" usebox="none" width="50line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocatòria
+\series default
+: 0004
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Hora d'inici
+\series default
+: 16:00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Durada:
+\series default
+ 90 minuts
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Loc
+\series default
+: Centre Palma Born
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="left" valignment="bottom" width="50line%">
+<column alignment="left" valignment="bottom" width="50line%">
+<row>
+<cell multicolumn="1" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none" width="25line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Convocats
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Assistents
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joana Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jaume Fiol Mas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Macià Llabrés Pons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Marta Riutort Gamundí
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="left" valignment="middle" width="50line%">
+<column alignment="left" valignment="middle" width="50line%">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ordre del dia
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Tractat
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entrevista amb representants del professorat i personal de serveis administratiu
+s per tal d'obtenir informació i requeriments específics de les seves àrees.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="middle" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\size large
+Acords
+\end_layout
+
+\begin_layout Itemize
+Para la gestión de alumnos se acuerda que la aplicación permitirá la gestión
+ completa de los alumnos matriculados en un centro y además las fichas serán
+ comunes a todos los centros por si un alumno desea acudir a diferentes
+ cursos impartidos en diferentes centros.
+ La gestión de un alumno implica una ficha completa con sus datos personales,
+ un listado de matriculas en los cursos a los que asiste, información contable
+ relativa a los pagos de estas matrículas.
+\end_layout
+
+\begin_layout Itemize
+Para poder matricularse en algunos cursos es necesaria una preinscripción,
+ la aplicación debería gestionar tambien estas preinscripciones.
+ La adjudicación de plazas también debería poder realizarse a traves de
+ la aplicación.
+ Si el alumno desea relizar una prueba de nivel al matricularse en un curso,
+ la aplicación deberia facilitar las pruebas creadas por servicios comerciales
+ para el curso en concreto del cual se está realizando la matrícula.
+\end_layout
+
+\begin_layout Itemize
+De cara a los alumnos que lo soliciten se deben poder realizar certificados
+ de asistencia a un curso determinado.
+\end_layout
+
+\begin_layout Itemize
+En lo relativo al material del centro, se desea tener un catálogo informatizado
+ que permita la consulta de material disponible y asignarle estados (prestado,
+ reservado, disponible).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size large
+Nous punts a tractar
+\end_layout
+
+\begin_layout Itemize
+Presentar una maqueta de las funcionalidades que se desarrollarían para
+ solucionar sus requerimientos y pedir opinion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{CATÀLEG DE REQUERIMENTS}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Catàleg de requeriments
+\end_layout
+
+\begin_layout Standard
+\align left
+Per tal de facilitar la comprensió dels requeriments, es dividiran per stakehold
+ers.
+\end_layout
+
+\begin_layout Subsection
+Direcció
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDI001 : Direcció afegeix un nou centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDI002 : Direcció afegeix un aula a un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDI003 : Direcció modifica les dades d'un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDI004 : Direcció modifica les dades d'un aula d'un un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDI005 : Direcció consulta les dades d'un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDI006 : Direcció consulra les dades d'un aula d'un centre.
+\end_layout
+
+\begin_layout Subsection
+Recursos Humans
+\end_layout
+
+\begin_layout Itemize
+\align left
+RRH001 : Recursos humans treu un llistat de professors filtrats per llengua
+ nativa.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RRH002 : Recursos humans treu un llistat de professors filtrats per titulació.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RRH003 : Recursos humans treu un llistat de professors filtrats per experiència
+\end_layout
+
+\begin_layout Subsection
+Departament Comercial
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC001 : Departament comercial treu un llistat d'alumnes matriculats a un
+ curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC002 : Departament comercial crea un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC003 : Departament comercial assigna un professor a un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC004 : Departament comercial dissenya un tema i l'assigna a un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC005 : Departament comercial divideix un curs en grups.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC006 : Departament comercial treu un llistat d'assistència d'una classe.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC007 : Departament comercial treu un llistat d'assistència d'un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC008 : Departament comercial treu estadística d'aprovats en un curs oficial.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC009 : Departament comercial treu estadística d'assistència a un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC010 : Departament comercial treu estadística d'alumnes matriculats enfront
+ a preinscrits.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC011 : Departament comercial treu estadística d'alumnes matriculats que
+ acaben un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC012 : Departament comercial treu estadística d'alumnes matriculats que
+ no acaben un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RDC013 : Departament comercial treu estadística d'alumnes de matriculats
+ que continuen al següent nivell d'un curs.
+\end_layout
+
+\begin_layout Subsection
+Serveis Administratius
+\end_layout
+
+\begin_layout Itemize
+\align left
+RSA001 : Serveis administratius treu un llistat llistat d'alumnes matriculats
+ en un curs.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RSA002 : Serveis administratius treu un llistat de matricules d'un alumne.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RSA003 : Serveis administratius adjudica un grup a un alumne.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RSA004 : Serveis administratius afegeix un recurs a un centre.
+\end_layout
+
+\begin_layout Subsection
+Professors
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR001 : Un professor presenta el seu currículum.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR002 : Un professor actualitza el seu currículum.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR003 : Un professor actualitza les seves dades personals.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR004 : Un professor obté un llistat d'alumnes d'un grup.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR005 : Un professor introdueix les dades d'assistència d'una una sessió.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR006 : Un professor afegeix un doc al campus online.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RPR007 : Un professor assigna una o mes sessions a un tema.
+\end_layout
+
+\begin_layout Subsection
+Alumnes
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL001 : Un alumne consulta un doc al campus online.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL002 : Un alumne emplena un doc del campus online.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL003 : Un alumne recull un recurs a un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL004 : Un alumne torna un recurs d'un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL005 : Un alumne consulta el catàleg de recursos d'un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL006 : Un alumne reserva un recurs d'un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL007 : Un alumne paga una matricula.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL008 : Un alumne consulta informació sobre un centre.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL009 : Un alumne consulta els cursos oferts.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL010 : Un alumne emplena una preinscripció.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL011 : Un alumne emplena una matrícula.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL012 : Un alumne modifica les seves dades.
+\end_layout
+
+\begin_layout Itemize
+\align left
+RAL013 : Un alumne sol·licita un certificat d'assistència.
+\end_layout
+
+\begin_layout Subsection
+Empresa
+\end_layout
+
+\begin_layout Itemize
+\align left
+REM001 : Una empresa sol·licita un curs a mida al departament comercial.
+\end_layout
+
+\begin_layout Itemize
+\align left
+REM002 : Una empresa sol·licita un llistat d'assistència a un curs dels
+ seus empleats.
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[L]{
+\backslash
+includegraphics[0in,0.06in][1,1]{./logo.png}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[C]{
+\backslash
+large{DICCIONARI DE DADES}}        
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhead[R]{
+\backslash
+scriptsize{Comunica't 
+\backslash
+
+\backslash
+ 10000110}}            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyfoot[R]{
+\backslash
+scriptsize{Pàgina 
+\backslash
+thepage}} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Diccionari de dades
+\end_layout
+
+\end_body
+\end_document
