@@ -6,8 +6,8 @@ The items in this exercise are:
 
 * 1 agent process
 * 1 writer process
-* 2 server process
-* 500 client process
+* 2 server processes
+* 500 client processes
 
 * 2 message queues
 * "Semaphores":http://en.wikipedia.org/wiki/Semaphore_%28programming%29
@@ -33,6 +33,5 @@ Any memory access (on the shared memory zone or the binary file) should be manag
 
 h2. bbdd (Data Bases)
 
-It consists on making a simple database design and a PHP application for managing a
-private messaging area, which will contain users and departments, manage diferent
-user privileges and hability to send messages tu single users or departments (user groups)
+It consists on making a simple database design and a PHP application for managing a private messaging area, which will contain users and departments, manage
+diferent user privileges and hability to send messages to single users or departments (aka user groups).
