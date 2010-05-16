@@ -1,0 +1,38 @@
+This project is an agroupation of exercises for some subjects in my degree.
+
+h2. so (Operating Systems)
+
+The items in this exercise are:
+
+* 1 agent process
+* 1 writer process
+* 2 server process
+* 500 client process
+
+* 2 message queues
+* "Semaphores":http://en.wikipedia.org/wiki/Semaphore_%28programming%29
+
+* 1 data file with 15.000 entries plus one more field to store the number of checks made by the writer.
+** Each entry in the data file has 1 field:
+*** Value
+
+* 1 shared memory with 15.000 entries
+** Each entry in the shared memory zone will have 2 values
+*** Value
+*** Dirty (boolean mark)
+
+* 1 writer log file
+
+Initially all values are set to 0 (the dirty marker too). Clients comunicate with the servers (only one server attends a request) trought the message queues
+in order to read or modify an entry (in the shared memory zone). If a server receives a write operation it stores the new value and sets its dirty flag to 1.
+
+Periodically, the shared memory data is stored into a binary file by the writer process.
+
+Any memory access (on the shared memory zone or the binary file) should be managed with semaphores ("Readers-writers problem":http://en.wikipedia.org/wiki/Readers-writers_problem)
+
+
+h2. bbdd (Data Bases)
+
+It consists on making a simple database design and a PHP application for managing a
+private messaging area, which will contain users and departments, manage diferent
+user privileges and hability to send messages tu single users or departments (user groups)
