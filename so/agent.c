@@ -10,8 +10,9 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 
-#define CLIENTS 10
+#define CLIENTS 500
 #define SERVERS 2
+#define CLIENT_OPERATIONS 1000
 
 typedef struct {
 	int value, dirty;
@@ -35,7 +36,7 @@ int finished;
 int counter;
 
 
-void gravedigger()
+void reaper()
 {
 	int buried = 0;
 
@@ -82,20 +83,20 @@ void server()
 	while(1) {
 		res = msgrcv(queue1, &message, sizeof(MessageBody), 0, 0);
 		if (res < 0) {
-			printf ("Reception error %d %s\n", getpid(), strerror(errno));
+			perror("server_rcv");
 			continue;
 		}
 		counter++;
 		switch(message.data.code)
 		{
 			case 0: // Read operation
-				printf("Server (%d), read on %d requested by client %ld\n", getpid(), message.data.index, message.type);
+				printf("Server (%d), read on %ld requested by client %ld\n", getpid(), message.data.index, message.type);
 				message_out.data.index = message.data.index;
 				message_out.data.value = 5;
 				message_out.data.code = -1;
 				break;
 			case 1: // Write operation
-				printf("Server (%d), write %d on %d requested by client %ld\n", getpid(), message.data.value, message.data.index, message.type);
+				printf("Server (%d), write %ld on %ld requested by client %ld\n", getpid(), message.data.value, message.data.index, message.type);
 				message_out.data.index = message.data.index;
 				message_out.data.value = 6;
 				message_out.data.code = 0;
@@ -111,26 +112,55 @@ void server()
 	}
 }
 
+
+/**
+ * Makes a request which will be processed by a random server
+ * returns 0 if the request was processed without errors, otherwhise
+ * it returns 1.
+ *
+ * When performing a read request, the value parameter will be updated
+ * with the value returned by the server so passing it by reference will
+ * allow you to recover the read value.
+ */
+int do_request(pid, write, index, value)
+{
+	int res;
+	Message message1, message2;
+	
+	message1.type = pid;
+	message1.data.code = write;
+	message1.data.index = index;
+	message1.data.value = value;
+	
+	res = msgsnd(queue1, &message1, sizeof(MessageBody), 0);
+	if (res < 0) {
+		perror("client_snd");
+		exit(1);
+	}
+	res = msgrcv(queue2, &message2, sizeof(MessageBody), pid, 0);
+	if (res < 0) {
+		perror("client_rcv");
+		exit(1);
+	}
+}
+
 void client()
 {
-	int i, res;
-	Message message1, message2;
+	int i, pid, write, index, value, res;
+	pid = getpid();
 
-	for (i=0; i < 100; i++) {
-		message1.type = getpid();
-		message1.data.code = 1;
-		message1.data.index = 10;
-		message1.data.value = 42;
+	for (i=0; i < CLIENT_OPERATIONS; i++) {
+		write = (random() % 5 == 0) ? 1:0;
+		index = random() % 15000;
+
 		
-		res = msgsnd(queue1, &message1, sizeof(MessageBody), 0);
-		if (res < 0) {
-			printf("Error in delivery, %d, %d, %s\n", getpid(), queue1, strerror(errno));
+		res = do_request(pid, write, index, -1);
+		
+		if (write) {
+			value += random() % 10 + 1;
+			res = do_request(pid, write, index, value)
 		}
-		res = msgrcv(queue2, &message2, sizeof(MessageBody), getpid(), 0);
-		if (res < 0) {
-			printf ("Error receiving %d, %d, %s\n", getpid(), queue2, strerror(errno));
-		}
-		printf("Client (%d): value = %d\n", getpid(), message2.data.value);
+		
 		usleep(10000);
 	}
 }
@@ -141,7 +171,7 @@ int main()
 	int i, res;
 	finished = 0;
 	
-	signal(SIGCHLD, gravedigger);
+	signal(SIGCHLD, reaper);
 
 	// Se asigna búfer de línea a stdout
 	setlinebuf(stdout);
@@ -163,7 +193,6 @@ int main()
 	
 	printf("Starting clients\n");
 	for(i=0; i < CLIENTS; i++) {
-		//printf("client iter: %d\n", i);
 		res = fork();
 		if (res < 0) {
 			perror("fork_client");
@@ -180,7 +209,7 @@ int main()
 		pause();
 	}
 	
-	// Client finished, stop servers
+	// Clients finished, stop servers
 	for (i=0; i < SERVERS; i++) {
 		printf("Sending SIGTERM to server %d\n", pid_servers[i]);
 		kill(pid_servers[i], SIGTERM);
