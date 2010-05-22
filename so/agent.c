@@ -31,7 +31,7 @@ typedef struct {
 
 int queue1, queue2;
 int pid_servers[SERVERS];
-int clients_finished;
+int finished;
 int counter;
 
 
@@ -41,10 +41,10 @@ void gravedigger()
 
 	while (wait3(NULL, WNOHANG, NULL) > 0){
 		buried++;
-		clients_finished++;
+		finished++;
 	}
 	if (buried > 0) 
-		printf("Finished: %d\n", clients_finished);
+		printf("Finished: %d\n", finished);
 }
 
 int make_queue(int key)
@@ -68,12 +68,13 @@ void blowup_queue(int queue)
 void finish(int s)
 {
 	printf ("exiting %d, messages %d received\n", getpid(), counter);
+	finished++;
 	exit(0);
 }
 
-void servidor()
+void server()
 {
-	Message message;
+	Message message, message_out;
 	int res;
 
 	signal (SIGTERM, finish);
@@ -84,30 +85,113 @@ void servidor()
 			printf ("Reception error %d %s\n", getpid(), strerror(errno));
 			continue;
 		}
+		counter++;
 		switch(message.data.code)
 		{
 			case 0: // Read operation
-				printf("Server (%d), value %d received from client %ld\n", getpid(), message.data.value, message.type);
+				printf("Server (%d), read on %d requested by client %ld\n", getpid(), message.data.index, message.type);
+				message_out.data.index = message.data.index;
+				message_out.data.value = 5;
+				message_out.data.code = -1;
 				break;
 			case 1: // Write operation
-				printf("Server (%d), value %d received from client %ld\n", getpid(), message.data.value, message.type);
+				printf("Server (%d), write %d on %d requested by client %ld\n", getpid(), message.data.value, message.data.index, message.type);
+				message_out.data.index = message.data.index;
+				message_out.data.value = 6;
+				message_out.data.code = 0;
 				break;
 			default:
-				printf("Invalid message");
-				exit(0);
+				printf("Invalid message\n");
 		}
+		message_out.type = message.type;
+		res = msgsnd(queue2, &message_out, sizeof(MessageBody), 0);
+		if (res < 0) {
+			perror("server_response");
+		}
+	}
+}
+
+void client()
+{
+	int i, res;
+	Message message1, message2;
+
+	for (i=0; i < 100; i++) {
+		message1.type = getpid();
+		message1.data.code = 1;
+		message1.data.index = 10;
+		message1.data.value = 42;
+		
+		res = msgsnd(queue1, &message1, sizeof(MessageBody), 0);
+		if (res < 0) {
+			printf("Error in delivery, %d, %d, %s\n", getpid(), queue1, strerror(errno));
+		}
+		res = msgrcv(queue2, &message2, sizeof(MessageBody), getpid(), 0);
+		if (res < 0) {
+			printf ("Error receiving %d, %d, %s\n", getpid(), queue2, strerror(errno));
+		}
+		printf("Client (%d): value = %d\n", getpid(), message2.data.value);
+		usleep(10000);
 	}
 }
 
 
 int main()
 {
-	clients_finished = 0;
+	int i, res;
+	finished = 0;
+	
 	signal(SIGCHLD, gravedigger);
 
 	// Se asigna búfer de línea a stdout
 	setlinebuf(stdout);
-
-
-	exit(0);
+	
+	queue1 = make_queue(52);
+	queue2 = make_queue(53);
+	
+	printf("Starting servers\n");
+	for (i=0; i < SERVERS; i++) {
+		pid_servers[i] = fork();
+		if (pid_servers[i] < 0){
+			perror("fork_server");
+		}
+		if (pid_servers[i] == 0){
+			server();
+			exit(0);
+		}
+	}
+	
+	printf("Starting clients\n");
+	for(i=0; i < CLIENTS; i++) {
+		//printf("client iter: %d\n", i);
+		res = fork();
+		if (res < 0) {
+			perror("fork_client");
+		}
+		if (res == 0){ // CHILD
+			client();
+			exit(0);
+		}
+		usleep(10000);
+	}
+	
+	// Wait all clients to finish
+	while (finished < CLIENTS) {
+		pause();
+	}
+	
+	// Client finished, stop servers
+	for (i=0; i < SERVERS; i++) {
+		printf("Sending SIGTERM to server %d\n", pid_servers[i]);
+		kill(pid_servers[i], SIGTERM);
+	}
+	
+	// Wait for servers to finish
+	while (finished < (CLIENTS + SERVERS))  {
+		pause();
+	}
+	
+	blowup_queue(queue1);
+	blowup_queue(queue2);
+	return 0;
 }
