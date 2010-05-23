@@ -3,37 +3,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-#include <sys/time.h>
-#include <sys/resource.h>
+
 #include <sys/wait.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/sem.h>
 #include <sys/shm.h>
 #include <sys/stat.h>
 
-#include "lectores_escritores.h"
-
-#define CLIENTS 500
-#define SERVERS 2
-#define CLIENT_OPERATIONS 1000
-#define POOL_SIZE 15000
-
-typedef struct {
-	int value, dirty;
-} Cell;
-
-typedef struct {
-	int	 code;
-	long index;
-	long value;
-} MessageBody;
-
-typedef struct {
-	long type;
-	MessageBody data;
-} Message;
-
+#include "lib/commons.h"
+#include "lib/lectores_escritores.h"
 
 int queue1, queue2;
 int pid_servers[SERVERS];
@@ -69,128 +45,6 @@ int make_queue(int key)
 void blowup_queue(int queue)
 {
 	msgctl(queue, IPC_RMID, 0);
-}
-
-void finish(int s)
-{
-	printf ("exiting %d, messages %d received\n", getpid(), counter);
-	finished++;
-	exit(0);
-}
-
-void server()
-{
-	Message message, message_out;
-	int res;
-	Cell *memory;
-	
-	memory = shmat(pool, NULL, 0);
-	if (memory == (void *)-1){
-		perror("shmat");
-		exit(EXIT_FAILURE);
-	}
-
-	signal (SIGTERM, finish);
-	printf ("Server: %d\n", getpid());
-	while(1) {
-		res = msgrcv(queue1, &message, sizeof(MessageBody), 0, 0);
-		if (res < 0) {
-			perror("server_rcv");
-			continue;
-		}
-		
-		counter++;
-		
-		switch(message.data.code)
-		{
-			case 0: // Read operation
-				printf("Server (%d), read on [%ld] requested by client %ld\n", getpid(), message.data.index, message.type);
-				message_out.data.index = message.data.index;
-				message_out.data.value = memory[message.data.index].value;
-				message_out.data.code = -1;
-				break;
-			case 1: // Write operation
-				printf("Server (%d), write %ld on [%ld] requested by client %ld\n", getpid(), message.data.value, message.data.index, message.type);
-				memory[message.data.index].value = message.data.value;
-				memory[message.data.index].dirty = 1;
-				message_out.data.index = message.data.index;
-				message_out.data.value = message.data.value;
-				message_out.data.code = 0;
-				break;
-			default:
-				printf("Invalid message\n");
-		}
-		
-		message_out.type = message.type;
-		res = msgsnd(queue2, &message_out, sizeof(MessageBody), 0);
-		
-		if (res < 0) {
-			perror("server_response");
-		}
-	}
-}
-
-/**
- * Makes a request which will be processed by a random server
- * returns 0 if the request was processed without errors, otherwise
- * it returns 1.
- *
- * When performing a read request, the value parameter will be updated
- * with the value returned by the server so passing it by reference will
- * allow you to recover the read value.
- */
-int do_request(int pid, int write, int index, int *value)
-{
-	int res;
-	Message message1, message2;
-	
-	message1.type = pid;
-	message1.data.code = write;
-	message1.data.index = index;
-	message1.data.value = *value;
-	
-	res = msgsnd(queue1, &message1, sizeof(MessageBody), 0);
-	if (res < 0) {
-		perror("client_snd");
-		exit(EXIT_FAILURE);
-	}
-	res = msgrcv(queue2, &message2, sizeof(MessageBody), pid, 0);
-	if (res < 0) {
-		perror("client_rcv");
-		exit(EXIT_FAILURE);
-	}
-	
-	*value = message2.data.value;
-	return message2.data.code;
-}
-
-void client()
-{
-	int i, pid, write, index, value, sum, res;
-	
-	pid = getpid();
-
-	for (i=0; i < CLIENT_OPERATIONS; i++) {
-		write = (random() % 5 == 0) ? 1:0;
-		index = random() % POOL_SIZE;
-		value = -1;
-		
-		write ? entrada_escritores() : entrada_lectores();
-
-		res = do_request(pid, 0, index, &value);
-		printf("Client (%d), read on [%d] value %d\n", pid, index, value);
-
-		if (write) {
-			sum = random() % 10 + 1;
-			value +=  sum;
-			res = do_request(pid, 1, index, &value);
-			printf("Client (%d), read on [%d] value %d after add %d\n", pid, index, value, sum);
-		}
-		
-		write ? salida_escritores() : salida_lectores();
-		
-		usleep(10000);
-	}
 }
 
 void initialize_shared_memory()
