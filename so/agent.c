@@ -14,10 +14,10 @@
 
 #include "lectores_escritores.h"
 
-#define CLIENTS 10
+#define CLIENTS 500
 #define SERVERS 2
-#define CLIENT_OPERATIONS 100
-#define POOL_SIZE 2
+#define CLIENT_OPERATIONS 1000
+#define POOL_SIZE 15000
 
 typedef struct {
 	int value, dirty;
@@ -172,7 +172,6 @@ void client()
 
 	for (i=0; i < CLIENT_OPERATIONS; i++) {
 		write = (random() % 5 == 0) ? 1:0;
-		write = 1;
 		index = random() % POOL_SIZE;
 		value = -1;
 		
@@ -223,18 +222,19 @@ int main()
 	
 	signal(SIGCHLD, reaper);
 
-	// Se asigna búfer de línea a stdout
 	setlinebuf(stdout);
 	
+	// Create message queues
 	queue1 = make_queue(52);
 	queue2 = make_queue(53);
 	
+	// Create the shared memory space
 	pool = shmget(42, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
 	
 	initialize_shared_memory();
 	inicializar_le();
 	
-	printf("Starting servers\n");
+	// Start servers
 	for (i=0; i < SERVERS; i++) {
 		pid_servers[i] = fork();
 		if (pid_servers[i] < 0){
@@ -246,7 +246,7 @@ int main()
 		}
 	}
 	
-	printf("Starting clients\n");
+	// Start clients
 	for(i=0; i < CLIENTS; i++) {
 		res = fork();
 		if (res < 0) {
@@ -275,6 +275,7 @@ int main()
 		pause();
 	}
 	
+	// Remove message queues
 	blowup_queue(queue1);
 	blowup_queue(queue2);
 	return 0;
