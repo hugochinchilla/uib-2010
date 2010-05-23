@@ -132,7 +132,7 @@ void server()
 
 /**
  * Makes a request which will be processed by a random server
- * returns 0 if the request was processed without errors, otherwhise
+ * returns 0 if the request was processed without errors, otherwise
  * it returns 1.
  *
  * When performing a read request, the value parameter will be updated
