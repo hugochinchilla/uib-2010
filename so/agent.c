@@ -9,10 +9,15 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
+#include <sys/shm.h>
+#include <sys/stat.h>
 
-#define CLIENTS 500
+#include "lectores_escritores.h"
+
+#define CLIENTS 10
 #define SERVERS 2
-#define CLIENT_OPERATIONS 1000
+#define CLIENT_OPERATIONS 100
+#define POOL_SIZE 2
 
 typedef struct {
 	int value, dirty;
@@ -34,7 +39,7 @@ int queue1, queue2;
 int pid_servers[SERVERS];
 int finished;
 int counter;
-
+int pool;
 
 void reaper()
 {
@@ -77,6 +82,13 @@ void server()
 {
 	Message message, message_out;
 	int res;
+	Cell *memory;
+	
+	memory = shmat(pool, NULL, 0);
+	if (memory == (void *)-1){
+		perror("shmat");
+		exit(EXIT_FAILURE);
+	}
 
 	signal (SIGTERM, finish);
 	printf ("Server: %d\n", getpid());
@@ -86,32 +98,37 @@ void server()
 			perror("server_rcv");
 			continue;
 		}
+		
 		counter++;
+		
 		switch(message.data.code)
 		{
 			case 0: // Read operation
-				printf("Server (%d), read on %ld requested by client %ld\n", getpid(), message.data.index, message.type);
+				printf("Server (%d), read on [%ld] requested by client %ld\n", getpid(), message.data.index, message.type);
 				message_out.data.index = message.data.index;
-				message_out.data.value = 5;
+				message_out.data.value = memory[message.data.index].value;
 				message_out.data.code = -1;
 				break;
 			case 1: // Write operation
-				printf("Server (%d), write %ld on %ld requested by client %ld\n", getpid(), message.data.value, message.data.index, message.type);
+				printf("Server (%d), write %ld on [%ld] requested by client %ld\n", getpid(), message.data.value, message.data.index, message.type);
+				memory[message.data.index].value = message.data.value;
+				memory[message.data.index].dirty = 1;
 				message_out.data.index = message.data.index;
-				message_out.data.value = 6;
+				message_out.data.value = message.data.value;
 				message_out.data.code = 0;
 				break;
 			default:
 				printf("Invalid message\n");
 		}
+		
 		message_out.type = message.type;
 		res = msgsnd(queue2, &message_out, sizeof(MessageBody), 0);
+		
 		if (res < 0) {
 			perror("server_response");
 		}
 	}
 }
-
 
 /**
  * Makes a request which will be processed by a random server
@@ -122,7 +139,7 @@ void server()
  * with the value returned by the server so passing it by reference will
  * allow you to recover the read value.
  */
-int do_request(pid, write, index, value)
+int do_request(int pid, int write, int index, int *value)
 {
 	int res;
 	Message message1, message2;
@@ -130,41 +147,74 @@ int do_request(pid, write, index, value)
 	message1.type = pid;
 	message1.data.code = write;
 	message1.data.index = index;
-	message1.data.value = value;
+	message1.data.value = *value;
 	
 	res = msgsnd(queue1, &message1, sizeof(MessageBody), 0);
 	if (res < 0) {
 		perror("client_snd");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	res = msgrcv(queue2, &message2, sizeof(MessageBody), pid, 0);
 	if (res < 0) {
 		perror("client_rcv");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
+	
+	*value = message2.data.value;
+	return message2.data.code;
 }
 
 void client()
 {
-	int i, pid, write, index, value, res;
+	int i, pid, write, index, value, sum, res;
+	
 	pid = getpid();
 
 	for (i=0; i < CLIENT_OPERATIONS; i++) {
 		write = (random() % 5 == 0) ? 1:0;
-		index = random() % 15000;
+		write = 1;
+		index = random() % POOL_SIZE;
+		value = -1;
+		
+		write ? entrada_escritores() : entrada_lectores();
 
-		
-		res = do_request(pid, write, index, -1);
-		
+		res = do_request(pid, 0, index, &value);
+		printf("Client (%d), read on [%d] value %d\n", pid, index, value);
+
 		if (write) {
-			value += random() % 10 + 1;
-			res = do_request(pid, write, index, value)
+			sum = random() % 10 + 1;
+			value +=  sum;
+			res = do_request(pid, 1, index, &value);
+			printf("Client (%d), read on [%d] value %d after add %d\n", pid, index, value, sum);
 		}
+		
+		write ? salida_escritores() : salida_lectores();
 		
 		usleep(10000);
 	}
 }
 
+void initialize_shared_memory()
+{
+	int i;
+	Cell *memory;
+	
+	memory = shmat(pool, NULL, 0);
+	if (memory == (void *)-1){
+		perror("shmat");
+		exit(EXIT_FAILURE);
+	}
+	
+	for (i=0; i<POOL_SIZE; i++){
+		memory[i].value = 0;
+		memory[i].dirty = 0;
+	}
+
+	if (shmdt(memory) == -1) {
+		perror("shmdt");
+		exit(EXIT_FAILURE);
+	}
+}
 
 int main()
 {
@@ -178,6 +228,11 @@ int main()
 	
 	queue1 = make_queue(52);
 	queue2 = make_queue(53);
+	
+	pool = shmget(42, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
+	
+	initialize_shared_memory();
+	inicializar_le();
 	
 	printf("Starting servers\n");
 	for (i=0; i < SERVERS; i++) {
