@@ -1,7 +1,7 @@
-#define CLIENTS 500
+#define CLIENTS 5
 #define SERVERS 2
-#define CLIENT_OPERATIONS 1000
-#define POOL_SIZE 15000
+#define CLIENT_OPERATIONS 100
+#define POOL_SIZE 15
 
 typedef struct {
 	int	 code;

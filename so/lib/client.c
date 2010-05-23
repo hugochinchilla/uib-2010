@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 #include "lectores_escritores.h"
 #include "commons.h"
 
-extern queue1, queue2;
+extern queue1, queue2, finished;
 
 
 /**
@@ -43,10 +44,18 @@ int do_request(int pid, int write, int index, int *value)
 	return message2.data.code;
 }
 
+void finish_client()
+{
+	finished++;
+	exit(EXIT_SUCCESS);
+}
+
 
 void client()
 {
 	int i, pid, write, index, value, sum, res;
+	
+	signal(SIGTERM, finish_client);
 	
 	pid = getpid();
 

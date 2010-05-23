@@ -16,7 +16,7 @@ void finish(int s)
 {
 	printf ("exiting %d, messages %d received\n", getpid(), counter);
 	finished++;
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 void server()

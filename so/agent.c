@@ -13,6 +13,8 @@
 
 int queue1, queue2;
 int pid_servers[SERVERS];
+int pid_clients[CLIENTS];
+int pid_writer;
 int finished;
 int counter;
 int pool;
@@ -69,12 +71,56 @@ void initialize_shared_memory()
 	}
 }
 
+void finish_agent()
+{
+	int i;
+	
+	// Wait all clients to finish
+	while (finished < CLIENTS) {
+		pause();
+	}	
+	
+	// Clients finished, stop servers
+	for (i=0; i < SERVERS; i++) {
+		printf("Sending SIGTERM to server %d\n", pid_servers[i]);
+		kill(pid_servers[i], SIGTERM);
+	}
+	
+	// Stop writer
+	kill(pid_writer, SIGTERM);
+	
+	// Wait for servers and writer to finish
+	while (finished < (CLIENTS + SERVERS + 1))  {
+		pause();
+	}
+
+	// Remove message queues
+	blowup_queue(queue1);
+	blowup_queue(queue2);
+	
+	// TODO: free the shared memory?
+}
+
+void interrupt_agent()
+{
+	int i;
+	
+	// Kill clients
+	for(i=0; i < CLIENTS; i++) {
+		kill(pid_clients[i], SIGTERM);
+	}	
+
+	finish_agent();
+	exit(EXIT_SUCCESS);
+}
+
 int main()
 {
-	int i, res;
+	int i;
 	finished = 0;
 	
 	signal(SIGCHLD, reaper);
+	signal(SIGINT, interrupt_agent);
 
 	setlinebuf(stdout);
 	
@@ -83,7 +129,7 @@ int main()
 	queue2 = make_queue(53);
 	
 	// Create the shared memory space
-	pool = shmget(42, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
+	pool = shmget(452, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
 	
 	initialize_shared_memory();
 	inicializar_le();
@@ -96,41 +142,34 @@ int main()
 		}
 		if (pid_servers[i] == 0){
 			server();
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
+	}
+	
+	// Start writer
+	pid_writer = fork();
+	if (pid_writer < 0){
+		perror("fork_writer");
+		exit(EXIT_FAILURE);
+	}
+	if (pid_writer == 0){
+		writer();
+		exit(EXIT_SUCCESS);
 	}
 	
 	// Start clients
 	for(i=0; i < CLIENTS; i++) {
-		res = fork();
-		if (res < 0) {
+		pid_clients[i] = fork();
+		if (pid_clients[i] < 0) {
 			perror("fork_client");
 		}
-		if (res == 0){ // CHILD
+		if (pid_clients[i] == 0){ // CHILD
 			client();
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		usleep(10000);
 	}
 	
-	// Wait all clients to finish
-	while (finished < CLIENTS) {
-		pause();
-	}
-	
-	// Clients finished, stop servers
-	for (i=0; i < SERVERS; i++) {
-		printf("Sending SIGTERM to server %d\n", pid_servers[i]);
-		kill(pid_servers[i], SIGTERM);
-	}
-	
-	// Wait for servers to finish
-	while (finished < (CLIENTS + SERVERS))  {
-		pause();
-	}
-	
-	// Remove message queues
-	blowup_queue(queue1);
-	blowup_queue(queue2);
+	finish_agent();
 	return 0;
 }
