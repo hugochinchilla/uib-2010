@@ -46,7 +46,7 @@ int do_request(int pid, int write, int index, int *value)
 
 void finish_client()
 {
-    finished++;
+    //finished++;
 	exit(EXIT_SUCCESS);
 }
 
@@ -55,6 +55,7 @@ void client()
 	int i, pid, write, index, value, sum, res;
 	
 	signal(SIGTERM, finish_client);
+	signal (SIGINT, SIG_IGN);
 	
 	pid = getpid();
 

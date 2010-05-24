@@ -15,21 +15,24 @@ extern finished, pool, queue1, queue2;
 
 int counter_read, counter_write;
 
-void finish(int s)
+
+void finish_server(int s)
 {
 	struct tms ttime;
 	times(&ttime);
 
 	printf ("Server exiting %d, %d messages received [read: %d, write: %d] - [sys time: %g, user time: %g]\n",
     getpid(), counter_read + counter_write, counter_read, counter_write, ttime.tms_utime, ttime.tms_stime);
-	finished++;
+	//finished++;
 	exit(EXIT_SUCCESS);
 }
+
+
 
 void server()
 {
 	Message message, message_out;
-	int res;
+	int res, index, value;
 	Cell *memory;
 	
 	memory = shmat(pool, NULL, 0);
@@ -38,7 +41,9 @@ void server()
 		exit(EXIT_FAILURE);
 	}
 
-	signal (SIGTERM, finish);
+	signal (SIGTERM, finish_server);
+	signal (SIGINT, SIG_IGN);
+
 	printf ("Server: %d\n", getpid());
 	while(1) {
 		res = msgrcv(queue1, &message, sizeof(MessageBody), 0, 0);
@@ -46,25 +51,28 @@ void server()
 			perror("server_rcv");
 			continue;
 		}
+
+		index = message.data.index;
+		value = message.data.value;
 		
 		switch(message.data.code)
 		{
 			case 0: // Read operation
 				printf("Server (%d), read on [%ld] requested by client %ld\n",
-					   getpid(), message.data.index, message.type);
+					   getpid(), index, message.type);
                 counter_read++;
-				message_out.data.index = message.data.index;
-				message_out.data.value = memory[message.data.index].value;
+				message_out.data.index = index;
+				message_out.data.value = memory[index].value;
 				message_out.data.code = -1;
 				break;
 			case 1: // Write operation
 				printf("Server (%d), write %ld on [%ld] requested by client %ld\n",
-					   getpid(), message.data.value, message.data.index, message.type);
+					   getpid(), value, index, message.type);
                 counter_write++;
-				memory[message.data.index].value = message.data.value;
-				memory[message.data.index].dirty = 1;
-				message_out.data.index = message.data.index;
-				message_out.data.value = message.data.value;
+				memory[index].value = value;
+				memory[index].dirty = 1;
+				message_out.data.index = index;
+				message_out.data.value = value;
 				message_out.data.code = 0;
 				break;
 			default:

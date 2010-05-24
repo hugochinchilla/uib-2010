@@ -3,12 +3,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-
 #include <sys/wait.h>
 #include <sys/shm.h>
 #include <sys/stat.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <sys/types.h>
 
 #include "lib/commons.h"
+#include "lib/client.h"
+#include "lib/server.h"
+#include "lib/writer.h"
 #include "lib/lectores_escritores.h"
 
 int queue1, queue2;
@@ -19,17 +24,15 @@ int finished;
 int counter;
 int pool;
 
+//char binary_filename[];
+
+
 void reaper()
 {
-	int buried = 0;
-
-	while (wait3(NULL, WNOHANG, NULL) > 0){
-		buried++;
-		finished++;
-	}
-	if (buried > 0) 
-		printf("Finished: %d\n", finished);
+	while ((wait3(NULL, WNOHANG, NULL)) > 0) finished++;
+	printf("Finished: %d\n", finished);
 }
+
 
 int make_queue(int key)
 {
@@ -44,17 +47,19 @@ int make_queue(int key)
 	return queue;
 }
 
+
 void blowup_queue(int queue)
 {
 	msgctl(queue, IPC_RMID, 0);
 }
+
 
 void initialize_shared_memory()
 {
 	int i, value;
     FILE *bdata;
 	Cell *memory;
-    
+
     bdata = fopen(binary_filename, "r");
     
     // File does not exist, init one
@@ -91,19 +96,12 @@ void initialize_shared_memory()
     
     fclose(bdata);
     
-    /*
-    for (i=0; i<POOL_SIZE; i++){
-		printf("%d,", memory[i].value);
-    }
-    printf("\n");
-    exit(0);
-    */
-
 	if (shmdt(memory) == -1) {
 		perror("shmdt");
 		exit(EXIT_FAILURE);
 	}
 }
+
 
 void finish_agent()
 {
@@ -148,6 +146,7 @@ void finish_agent()
     exit(EXIT_SUCCESS);
 }
 
+
 void interrupt_agent()
 {
 	int i;
@@ -157,9 +156,11 @@ void interrupt_agent()
 		kill(pid_clients[i], SIGTERM);
 	}
     
+	// Terminate as normal
 	finish_agent();
 	exit(EXIT_SUCCESS);
 }
+
 
 int main(int argc, char *argv[])
 {
@@ -170,6 +171,8 @@ int main(int argc, char *argv[])
         exit(EXIT_SUCCESS);
     }
     */
+
+	//strcopy(binary_filename, argv[1]);
     
 	int i;
 	finished = 0;
@@ -180,11 +183,11 @@ int main(int argc, char *argv[])
 	setlinebuf(stdout);
 	
 	// Create message queues
-	queue1 = make_queue(52);
-	queue2 = make_queue(53);
+	queue1 = make_queue(55);
+	queue2 = make_queue(56);
 	
 	// Create the shared memory space
-	pool = shmget(53, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
+	pool = shmget(58, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
 	
 	initialize_shared_memory();
 	inicializar_le();
@@ -224,12 +227,6 @@ int main(int argc, char *argv[])
 		}
 		usleep(10000);
 	}
-
-	printf("PID CLIENTS: ");	
-	for(i=0; i < CLIENTS; i++) {
-		printf("%d, ", pid_clients[i]);
-	}
-	printf("\n");
 	
 	finish_agent();
 	return 0;

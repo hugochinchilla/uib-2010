@@ -1,7 +1,7 @@
-#define CLIENTS 500
+#define CLIENTS 50
 #define SERVERS 2
-#define CLIENT_OPERATIONS 10
-#define POOL_SIZE 150
+#define CLIENT_OPERATIONS 1000
+#define POOL_SIZE 15000
 
 #define binary_filename "data.bin"
 

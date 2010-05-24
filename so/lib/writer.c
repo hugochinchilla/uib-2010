@@ -14,12 +14,12 @@ extern counter, finished, pool;
 
 void dump_memory()
 {
-	int i, value, runs;
+	int i, value, runs, dirty;
     FILE *bdata;
 	Cell *memory;
 
     printf("BEGIN WRITER\n");
-    entrada_escritores();
+    entrada_lectores();
 	memory = shmat(pool, NULL, 0);
 	if (memory == (void *)-1){
 		perror("shmat");
@@ -42,13 +42,14 @@ void dump_memory()
 	
 	for (i=0; i<POOL_SIZE; i++){
 		value = memory[i].value;
-        printf("%d, ", value);
+		dirty = memory[i].dirty;
+        printf("(%d,%d), ", value, dirty);
         
-        if (memory[i].dirty){
-            fseek(bdata, sizeof(int)*(i+1), SEEK_SET);
+        if (dirty){
+			fseek(bdata, sizeof(int)*(i+1), SEEK_SET);
             fwrite(&value, sizeof(int), 1, bdata);
             memory[i].dirty = 0;
-        }
+        }		
 	}
     
     // close the file
@@ -58,12 +59,13 @@ void dump_memory()
 		perror("shmdt");
 		exit(EXIT_FAILURE);
 	}
-    salida_escritores();
+    salida_lectores();
     printf("\nEND WRITER EXECUTION No %d\n", runs);
 }
 
 void finish_writer()
 {
+	//finished++;
     dump_memory();
     exit(EXIT_SUCCESS);
 }
@@ -71,6 +73,7 @@ void finish_writer()
 void writer()
 {
     signal(SIGTERM, finish_writer);
+	signal (SIGINT, SIG_IGN);
     
     while (1){
         dump_memory();
