@@ -15,7 +15,9 @@ extern counter, finished, pool;
 void dump_memory()
 {
 	int i;
+    FILE *bdata;
 	Cell *memory;
+    Cell value;
 	
     printf("BEGIN WRITER\n");
     entrada_escritores();
@@ -24,11 +26,24 @@ void dump_memory()
 		perror("shmat");
 		exit(EXIT_FAILURE);
 	}
+    
+    // open the file
+    //bdata = fopen(binary_filename, "w");
+    bdata = fopen("data.bin", "w");
 	
 	for (i=0; i<POOL_SIZE; i++){
-		printf("%d, ", memory[i].value);
-		memory[i].dirty = 0;
+        value = memory[i];
+        printf("%d, ", value.value);
+        
+        if (value.dirty){
+            fseek(bdata, sizeof(Cell)*i, SEEK_SET);
+            fwrite(&value, sizeof(Cell), 1, bdata);
+            memory[i].dirty = 0;
+        }
 	}
+    
+    // close the file
+    fclose(bdata);
 
 	if (shmdt(memory) == -1) {
 		perror("shmdt");
@@ -50,6 +65,6 @@ void writer()
     
     while (1){
         dump_memory();
-        usleep(50000);
+        usleep(5000000);
     }
 }

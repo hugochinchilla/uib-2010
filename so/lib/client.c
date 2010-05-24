@@ -46,10 +46,9 @@ int do_request(int pid, int write, int index, int *value)
 
 void finish_client()
 {
-	finished++;
+    finished++;
 	exit(EXIT_SUCCESS);
 }
-
 
 void client()
 {
@@ -59,8 +58,13 @@ void client()
 	
 	pid = getpid();
 
+    
 	for (i=0; i < CLIENT_OPERATIONS; i++) {
+        // Seed the random number generator with a different value for each client and operation
+        srand(i * pid);
+        
 		write = (random() % 5 == 0) ? 1:0;
+        write = 1;
 		index = random() % POOL_SIZE;
 		value = -1;
 		

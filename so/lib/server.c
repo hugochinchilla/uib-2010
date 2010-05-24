@@ -10,11 +10,14 @@
 #include "commons.h"
 #include "lectores_escritores.h"
 
-extern counter, finished, pool, queue1, queue2;
+extern finished, pool, queue1, queue2;
+
+int counter_read, counter_write;
 
 void finish(int s)
 {
-	printf ("exiting %d, messages %d received\n", getpid(), counter);
+	printf ("Server exiting %d, %d messages received [read: %d, write: %d] \n",
+    getpid(), counter_read + counter_write, counter_read, counter_write);
 	finished++;
 	exit(EXIT_SUCCESS);
 }
@@ -40,13 +43,12 @@ void server()
 			continue;
 		}
 		
-		counter++;
-		
 		switch(message.data.code)
 		{
 			case 0: // Read operation
 				printf("Server (%d), read on [%ld] requested by client %ld\n",
 					   getpid(), message.data.index, message.type);
+                counter_read++;
 				message_out.data.index = message.data.index;
 				message_out.data.value = memory[message.data.index].value;
 				message_out.data.code = -1;
@@ -54,6 +56,7 @@ void server()
 			case 1: // Write operation
 				printf("Server (%d), write %ld on [%ld] requested by client %ld\n",
 					   getpid(), message.data.value, message.data.index, message.type);
+                counter_write++;
 				memory[message.data.index].value = message.data.value;
 				memory[message.data.index].dirty = 1;
 				message_out.data.index = message.data.index;

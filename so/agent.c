@@ -52,18 +52,52 @@ void blowup_queue(int queue)
 void initialize_shared_memory()
 {
 	int i;
+    FILE *bdata;
 	Cell *memory;
+    Cell value;
+    
+    value.value = 0;
+    
+    bdata = fopen(binary_filename, "r");
+    
+    
+    // File does not exist, init one
+    if (bdata == 0){
+        value.value = 0;
+        value.dirty = 0;
+        
+        bdata = fopen(binary_filename, "w");
+        
+        for (i=0;i<POOL_SIZE;i++){
+            fwrite(&value, sizeof(Cell), 1, bdata);
+        }
+        
+        // Reset file to read mode
+        fclose(bdata);
+        bdata = fopen(binary_filename, "r");
+    }
 	
 	memory = shmat(pool, NULL, 0);
 	if (memory == (void *)-1){
 		perror("shmat");
 		exit(EXIT_FAILURE);
 	}
-	
+    
 	for (i=0; i<POOL_SIZE; i++){
-		memory[i].value = 0;
-		memory[i].dirty = 0;
+        fread(&value,sizeof(Cell),1,bdata);
+		memory[i].value = value.value;
+		memory[i].dirty = value.dirty;
 	}
+    
+    fclose(bdata);
+    
+    /*
+    for (i=0; i<POOL_SIZE; i++){
+		printf("%d,", memory[i].value);
+    }
+    printf("\n");
+    exit(0);
+    */
 
 	if (shmdt(memory) == -1) {
 		perror("shmdt");
@@ -74,11 +108,16 @@ void initialize_shared_memory()
 void finish_agent()
 {
 	int i;
+    
 	
+    //printf("\n============== WAITING CLIENTS ===================\n");
 	// Wait all clients to finish
 	while (finished < CLIENTS) {
+        //printf("PAUSE EXEC %d\n", finished);
 		pause();
-	}	
+	}
+    //printf("\n============== FINISH AGENT INVOKE ===================\n");
+    //printf("\n============== CLIENTS FINISHED ===================\n");
 	
 	// Clients finished, stop servers
 	for (i=0; i < SERVERS; i++) {
@@ -89,16 +128,26 @@ void finish_agent()
 	// Stop writer
 	kill(pid_writer, SIGTERM);
 	
+    
+    //printf("\n============== WAITING ===================\n");
 	// Wait for servers and writer to finish
 	while (finished < (CLIENTS + SERVERS + 1))  {
+        //printf("WAITING: %d\n", finished);
 		pause();
 	}
+    //printf("\n============== ALL TERMINATED ===================\n");
 
 	// Remove message queues
 	blowup_queue(queue1);
 	blowup_queue(queue2);
 	
-	// TODO: free the shared memory?
+	// Remove shared memory
+    if (shmctl(pool, IPC_RMID, NULL) == -1) {
+        perror("shmctl");
+        exit(EXIT_FAILURE);
+    }
+    
+    exit(EXIT_SUCCESS);
 }
 
 void interrupt_agent()
@@ -107,17 +156,27 @@ void interrupt_agent()
 	
 	// Kill clients
 	for(i=0; i < CLIENTS; i++) {
-		kill(pid_clients[i], SIGTERM);
-	}	
-
+		kill(pid_clients[i], SIGINT);
+	}
+    
 	finish_agent();
 	exit(EXIT_SUCCESS);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    /*
+    if (argc != 2) {
+        printf("usage: agent binary.bin\n");
+        //printf("usage: agent binary.bin logfile.txt\n");
+        exit(EXIT_SUCCESS);
+    }
+    */
+    
 	int i;
 	finished = 0;
+    
+    //binary_filename = argv[1];
 	
 	signal(SIGCHLD, reaper);
 	signal(SIGINT, interrupt_agent);
@@ -129,7 +188,7 @@ int main()
 	queue2 = make_queue(53);
 	
 	// Create the shared memory space
-	pool = shmget(452, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
+	pool = shmget(53, POOL_SIZE*sizeof(Cell), IPC_CREAT|S_IRWXU);
 	
 	initialize_shared_memory();
 	inicializar_le();
