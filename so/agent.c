@@ -35,12 +35,12 @@ int make_queue(int key)
 {
 	int queue = msgget(key, IPC_CREAT|0666);
 
-	if(queue < 0 ) {
+	if(queue < 0 ){
 		perror("msgget");
-		exit (0);
+		exit(0);
 	}
 
-	printf ("QUEUE: %d\n", queue);
+	printf("QUEUE: %d\n", queue);
 	return queue;
 }
 
@@ -51,25 +51,22 @@ void blowup_queue(int queue)
 
 void initialize_shared_memory()
 {
-	int i;
+	int i, value;
     FILE *bdata;
 	Cell *memory;
-    Cell value;
-    
-    value.value = 0;
     
     bdata = fopen(binary_filename, "r");
     
-    
     // File does not exist, init one
     if (bdata == 0){
-        value.value = 0;
-        value.dirty = 0;
-        
         bdata = fopen(binary_filename, "w");
-        
+        value = 0;
+
+		// Set to 0 writer runs (first item in file)
+		fwrite(&value, sizeof(int), 1, bdata);
+
         for (i=0;i<POOL_SIZE;i++){
-            fwrite(&value, sizeof(Cell), 1, bdata);
+            fwrite(&value, sizeof(int), 1, bdata);
         }
         
         // Reset file to read mode
@@ -82,11 +79,14 @@ void initialize_shared_memory()
 		perror("shmat");
 		exit(EXIT_FAILURE);
 	}
-    
+
+	// Make one read to skip the writer runs counter    
+	fread(&value,sizeof(int),1,bdata);
+
 	for (i=0; i<POOL_SIZE; i++){
-        fread(&value,sizeof(Cell),1,bdata);
-		memory[i].value = value.value;
-		memory[i].dirty = value.dirty;
+        fread(&value,sizeof(int),1,bdata);
+		memory[i].value = value;
+		memory[i].dirty = 0;
 	}
     
     fclose(bdata);
@@ -109,15 +109,15 @@ void finish_agent()
 {
 	int i;
     
-	
-    //printf("\n============== WAITING CLIENTS ===================\n");
 	// Wait all clients to finish
 	while (finished < CLIENTS) {
-        //printf("PAUSE EXEC %d\n", finished);
 		pause();
 	}
-    //printf("\n============== FINISH AGENT INVOKE ===================\n");
-    //printf("\n============== CLIENTS FINISHED ===================\n");
+    printf("\n============== CLIENTS FINISHED ===================\n");
+
+	// Stop writer, this will force a last memory dump.
+	kill(pid_writer, SIGTERM);
+	pause();
 	
 	// Clients finished, stop servers
 	for (i=0; i < SERVERS; i++) {
@@ -125,17 +125,13 @@ void finish_agent()
 		kill(pid_servers[i], SIGTERM);
 	}
 	
-	// Stop writer
-	kill(pid_writer, SIGTERM);
-	
     
-    //printf("\n============== WAITING ===================\n");
+    printf("\n============== WAITING ===================\n");
 	// Wait for servers and writer to finish
 	while (finished < (CLIENTS + SERVERS + 1))  {
-        //printf("WAITING: %d\n", finished);
 		pause();
 	}
-    //printf("\n============== ALL TERMINATED ===================\n");
+    printf("\n============== ALL TERMINATED ===================\n");
 
 	// Remove message queues
 	blowup_queue(queue1);
@@ -146,6 +142,8 @@ void finish_agent()
         perror("shmctl");
         exit(EXIT_FAILURE);
     }
+
+    printf("\n========= QUEUES & MEM FREED =========\n");
     
     exit(EXIT_SUCCESS);
 }
@@ -156,7 +154,7 @@ void interrupt_agent()
 	
 	// Kill clients
 	for(i=0; i < CLIENTS; i++) {
-		kill(pid_clients[i], SIGINT);
+		kill(pid_clients[i], SIGTERM);
 	}
     
 	finish_agent();
@@ -176,8 +174,6 @@ int main(int argc, char *argv[])
 	int i;
 	finished = 0;
     
-    //binary_filename = argv[1];
-	
 	signal(SIGCHLD, reaper);
 	signal(SIGINT, interrupt_agent);
 
@@ -228,6 +224,12 @@ int main(int argc, char *argv[])
 		}
 		usleep(10000);
 	}
+
+	printf("PID CLIENTS: ");	
+	for(i=0; i < CLIENTS; i++) {
+		printf("%d, ", pid_clients[i]);
+	}
+	printf("\n");
 	
 	finish_agent();
 	return 0;

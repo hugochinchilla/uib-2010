@@ -14,11 +14,10 @@ extern counter, finished, pool;
 
 void dump_memory()
 {
-	int i;
+	int i, value, runs;
     FILE *bdata;
 	Cell *memory;
-    Cell value;
-	
+
     printf("BEGIN WRITER\n");
     entrada_escritores();
 	memory = shmat(pool, NULL, 0);
@@ -27,17 +26,27 @@ void dump_memory()
 		exit(EXIT_FAILURE);
 	}
     
-    // open the file
-    //bdata = fopen(binary_filename, "w");
-    bdata = fopen("data.bin", "w");
+    // open the file and read writer runs from binary file
+    bdata = fopen(binary_filename, "r");
+	fread(&runs, sizeof(int), 1, bdata);
+
+	// Reset file to write mode
+	fclose(bdata);
+    bdata = fopen(binary_filename, "w");
+
+	runs++;
+
+	// update writer runs
+    fseek(bdata, 0, SEEK_SET);
+	fwrite(&runs, sizeof(int), 1, bdata);
 	
 	for (i=0; i<POOL_SIZE; i++){
-        value = memory[i];
-        printf("%d, ", value.value);
+		value = memory[i].value;
+        printf("%d, ", value);
         
-        if (value.dirty){
-            fseek(bdata, sizeof(Cell)*i, SEEK_SET);
-            fwrite(&value, sizeof(Cell), 1, bdata);
+        if (memory[i].dirty){
+            fseek(bdata, sizeof(int)*(i+1), SEEK_SET);
+            fwrite(&value, sizeof(int), 1, bdata);
             memory[i].dirty = 0;
         }
 	}
@@ -50,7 +59,7 @@ void dump_memory()
 		exit(EXIT_FAILURE);
 	}
     salida_escritores();
-    printf("\nEND WRITER\n");
+    printf("\nEND WRITER EXECUTION No %d\n", runs);
 }
 
 void finish_writer()

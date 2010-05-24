@@ -64,7 +64,6 @@ void client()
         srand(i * pid);
         
 		write = (random() % 5 == 0) ? 1:0;
-        write = 1;
 		index = random() % POOL_SIZE;
 		value = -1;
 		

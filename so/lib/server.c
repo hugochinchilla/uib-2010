@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/times.h>
 #include <sys/shm.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
@@ -16,8 +17,11 @@ int counter_read, counter_write;
 
 void finish(int s)
 {
-	printf ("Server exiting %d, %d messages received [read: %d, write: %d] \n",
-    getpid(), counter_read + counter_write, counter_read, counter_write);
+	struct tms ttime;
+	times(&ttime);
+
+	printf ("Server exiting %d, %d messages received [read: %d, write: %d] - [sys time: %g, user time: %g]\n",
+    getpid(), counter_read + counter_write, counter_read, counter_write, ttime.tms_utime, ttime.tms_stime);
 	finished++;
 	exit(EXIT_SUCCESS);
 }
